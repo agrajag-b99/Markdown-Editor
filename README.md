@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) Markdown editorn project which lets you edit and store files to an AWS S3 bucket
+This is a [Next.js](https://nextjs.org/) Markdown editor project which lets you edit and store files to an AWS S3 bucket
 
 ## Setup
 
