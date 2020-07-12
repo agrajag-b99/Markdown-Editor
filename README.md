@@ -1,8 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) Markdown editorn project which lets you edit and store files to an AWS S3 bucket
+
+## Setup
+
+Create a '.env' file to give your aws credentials
+
+Go and set the name of the bucket in **pages/api/upload.js** line number 2.
+
+## Setup In production
+
+While deploying this app you'll have to give the new endpoint of **upload** api in **pages/index.js** line number 27
 
 ## Getting Started
 
-First, run the development server:
+run the development server:
 
 ```bash
 npm run dev
@@ -27,4 +37,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out our [Next.js deployment documentation](https://nextjs.org/do
