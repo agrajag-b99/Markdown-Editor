@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) Markdown editor project which lets you 
 
 ## Setup
 
-Create a '.env' file to give your aws credentials
+Create a '.env.local' file to give your aws credentials
 
 Go and set the name of the bucket in **pages/api/upload.js** line number 2.
 
