@@ -6,6 +6,8 @@ Create a '.env.local' file to give your aws credentials
 
 Go and set the name of the bucket in **pages/api/upload.js** line number 2.
 
+To store generated files locally uncomment the write file command in line 49 of **pages/api/upload.js**
+
 ## Setup In production
 
 While deploying this app you'll have to give the new endpoint of **upload** api in **pages/index.js** line number 27
