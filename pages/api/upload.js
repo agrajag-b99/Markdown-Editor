@@ -1,6 +1,6 @@
 const fs = require('fs');
 const AWS = require('aws-sdk');
-const BUCKET_NAME = '';
+const BUCKET_NAME = '';         // Enter the name of s3 bucket that you want to publish to
 
 const s3 = new AWS.S3({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -46,7 +46,7 @@ export default (req, res) => {
     }
     let newFile = render(template, blog);
     uploadFile(newFile, blog.titl);
-    // fs.writeFileSync('./new.md', newFile);
+    // fs.writeFileSync('./new.md', newFile);           // Use this command to generate the markdown file locally also
     data.push(req.body)
     console.log(data.length);
     res.end()
