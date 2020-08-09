@@ -1,6 +1,14 @@
 const fs = require('fs');
 const AWS = require('aws-sdk');
-const BUCKET_NAME = '';         // Enter the name of s3 bucket that you want to publish to
+const BUCKET_NAME = 'higgleblog';         // Enter the name of s3 bucket that you want to publish to
+
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '50mb',
+    },
+  },
+}
 
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -8,7 +16,7 @@ const s3 = new AWS.S3({
 });
 
 const uploadFile = (fileContent, fileName) => {
-  let folder='' //folder in which u want it stored eg: 'folder/subfolder/' should end with '/'
+  let folder='blogposts/' //folder in which u want it stored eg: 'folder/subfolder/' should end with '/'
   let fkey= folder + fileName + '.md';
   // Setting up S3 upload parameters
   const params = {
@@ -45,7 +53,7 @@ let template = `---
 title: "{{titl}}"
 date: "{{dat}}"
 description: "{{desc}}"
-imgsrc: "/static/blogThumbnailPics/{{src}}.jpg"
+imgsrc: "{{src}}"
 ---
 {{content}}`
 
@@ -67,17 +75,17 @@ export default (req, res) => {
       dat: realDate,
       desc: description,
       content: mark,
-      src: blogKey
+      src: image
     }
 
     let newF = render(template, blog);
     let newFile = newF.replace(/\&amp;/g, '&').replace(/\&#x60;/g, '`').replace(/\&#39;/g, "'").replace(/\&#x2F;/g, '/').replace(/\&quot;/g, '"').replace(/\&gt;/g, '>').replace(/\&lt;/g, '<').replace(/\&#x3D;/g, '=')
     
-
-    
-    // uploadFile(newFile, blogKey);
+    // const imgbufr = fs.readFileSync(image);
+    uploadFile(newFile, blogKey);
     fs.writeFileSync('./'+blogKey+'.md', newFile); // Use this command to generate the markdown file locally also
-    console.log(image); // Use this command to generate the markdown file locally also
+    // console.log(image);
+    // fs.writeFileSync('./'+blogKey+'.txt', image); // Use this command to generate the markdown file locally also
     data.push(req.body)
     console.log(data.length);
     res.end()
