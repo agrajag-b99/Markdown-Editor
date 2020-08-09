@@ -1,6 +1,6 @@
 const fs = require('fs');
 const AWS = require('aws-sdk');
-const BUCKET_NAME = 'higgleblog';         // Enter the name of s3 bucket that you want to publish to
+const BUCKET_NAME = 'fq74s3s-yufierg';         // Enter the name of s3 bucket that you want to publish to
 
 export const config = {
   api: {
@@ -82,7 +82,7 @@ export default (req, res) => {
     let newFile = newF.replace(/\&amp;/g, '&').replace(/\&#x60;/g, '`').replace(/\&#39;/g, "'").replace(/\&#x2F;/g, '/').replace(/\&quot;/g, '"').replace(/\&gt;/g, '>').replace(/\&lt;/g, '<').replace(/\&#x3D;/g, '=')
     
     // const imgbufr = fs.readFileSync(image);
-    uploadFile(newFile, blogKey);
+    // uploadFile(newFile, blogKey);
     fs.writeFileSync('./'+blogKey+'.md', newFile); // Use this command to generate the markdown file locally also
     // console.log(image);
     // fs.writeFileSync('./'+blogKey+'.txt', image); // Use this command to generate the markdown file locally also

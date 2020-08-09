@@ -36,7 +36,7 @@ const Create = () => {
                 bodi: body,
                 mark: markd
             }
-            Axios.post('http://localhost:3000/api/upload', data) //while deploying change api endpoint, for example, 'https://editor.higgle.io/api/upload' 
+            Axios.post('/api/upload', data) //while deploying change api endpoint, for example, 'https://editor.higgle.io/api/upload' 
             .then(res=>console.log(res))
             console.log(data.image)
         }
