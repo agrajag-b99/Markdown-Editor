@@ -81,11 +81,8 @@ export default (req, res) => {
     let newF = render(template, blog);
     let newFile = newF.replace(/\&amp;/g, '&').replace(/\&#x60;/g, '`').replace(/\&#39;/g, "'").replace(/\&#x2F;/g, '/').replace(/\&quot;/g, '"').replace(/\&gt;/g, '>').replace(/\&lt;/g, '<').replace(/\&#x3D;/g, '=')
     
-    // const imgbufr = fs.readFileSync(image);
     uploadFile(newFile, blogKey);
-    fs.writeFileSync('./'+blogKey+'.md', newFile); // Use this command to generate the markdown file locally also
-    // console.log(image);
-    // fs.writeFileSync('./'+blogKey+'.txt', image); // Use this command to generate the markdown file locally also
+    // fs.writeFileSync('./'+blogKey+'.md', newFile); // Use this command to generate the markdown file locally also
     data.push(req.body)
     console.log(data.length);
     res.end()
