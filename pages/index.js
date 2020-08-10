@@ -15,6 +15,9 @@ const Create = () => {
     const [arr,setarr]=useContext(Data)
     const [pic, setPic]=useState(null)
     const router=useRouter()
+    function ShowSuccess() {
+		router.push("/successPage");
+	}
 
     const summit=(e)=>{
         e.preventDefault()
@@ -38,13 +41,12 @@ const Create = () => {
             }
             Axios.post('/api/upload', data) //while deploying change api endpoint, for example, 'https://editor.higgle.io/api/upload' 
             .then(res=>console.log(res))
-            console.log(data.image)
+            .then(setTimeout(ShowSuccess, 2000));
         }
         upload();
         e.target.title.value=''
         e.target.description.value=''
         setContent('')
-        router.push('/')
     }
         
     const config = {
